@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * Created by Ozgur Ustun on May, 2020
  */
-@FeignClient(name = "oauth-server")
+@FeignClient(name = "ebuy-oauth-server")
 @RequestMapping("/api")
 public interface AuthServiceFeign {
 
