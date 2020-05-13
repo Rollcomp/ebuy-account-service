@@ -15,22 +15,22 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Created by Ozgur Ustun on May, 2020
  */
 @FeignClient(name = "ebuy-oauth-server")
-@RequestMapping("/api")
+@RequestMapping("/auth")
 public interface AuthServiceFeign {
 
-    @PostMapping("/registerUser")
+    @PostMapping("/register")
     public Message<String> registerUser(@RequestBody UserDto userDto);
 
-    @PostMapping(value = "/confirmUser")
+    @PostMapping(value = "/confirm")
     public Message<String> confirmUserAccount(@RequestParam("t") String confirmationToken);
 
-    @PostMapping("/resetPassword")
+    @PostMapping("/reset-password")
     public Message<String> sendPasswordResetMail(@RequestBody String userEmail);
 
-    @PostMapping("/resetPassword")
+    @PostMapping("/reset-password-confirm")
     public Message<String> resetUserPassword(@RequestParam("token") String token, @RequestBody ResetPasswordDto passwordDto);
 
-    @PostMapping("/changePassword")
+    @PostMapping("/change-password")
     public Message<String> changeUserPassword(@RequestBody ChangePasswordDto changePasswordDto);
 
 }
