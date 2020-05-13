@@ -15,33 +15,33 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/user")
 public class UserAccountController {
 
     @Autowired
     private AuthServiceFeign authServiceFeign;
 
-    @PostMapping("/registerUser")
+    @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody UserDto userDto){
         return (ResponseEntity<?>) authServiceFeign.registerUser(userDto);
     }
 
-    @PostMapping("/confirmUser")
+    @PostMapping("/confirm")
     public ResponseEntity<?> confirmUserAccount(@RequestParam("t") String confirmationToken) {
         return (ResponseEntity<?>) authServiceFeign.confirmUserAccount(confirmationToken);
     }
 
-    @PostMapping("/resetPassword")
-    public Message<String> sendPasswordResetMail(@RequestBody String userEmail)  {
+    @PostMapping("/reset-password")
+    public Message<String> sendPasswordResetMail(@RequestParam String userEmail)  {
         return authServiceFeign.sendPasswordResetMail(userEmail);
     }
 
-    @PostMapping("/resetPassword")
+    @PostMapping("/reset-password-confirm")
     public Message<String> resetUserPassword(@RequestParam("token") String token, @RequestBody ResetPasswordDto passwordDto) {
         return authServiceFeign.resetUserPassword(token, passwordDto);
     }
 
-    @PostMapping("/changePassword")
+    @PostMapping("/change-password")
     public Message<String> changeUserPassword(@RequestBody ChangePasswordDto changePasswordDto) {
         return authServiceFeign.changeUserPassword(changePasswordDto);
     }
