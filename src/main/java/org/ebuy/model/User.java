@@ -1,18 +1,25 @@
-package org.ebuy.userregisterservice.dto;
+package org.ebuy.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Set;
 
 /**
  * Created by Ozgur Ustun on May, 2020
  */
-public class UserDto {
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class User {
 
     private String email;
-
     private String password;
 
-
-    public UserDto(String email, String password, boolean enabled) {
+    public User(String email, String password, boolean enabled) {
         this.email = email;
         this.password = password;
     }
