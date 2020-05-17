@@ -2,7 +2,7 @@ package org.ebuy.feign;
 
 import org.ebuy.model.ChangePasswordRequest;
 import org.ebuy.model.ResetPasswordRequest;
-import org.ebuy.dto.UserDto;
+import org.ebuy.dto.AuthUserDto;
 import org.ebuy.model.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
@@ -19,18 +19,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface AuthServiceFeign {
 
     @PostMapping("/register")
-    public ResponseEntity<UserDto> registerUser(@RequestBody User user);
+    public ResponseEntity<AuthUserDto> registerUser(@RequestBody User user);
 
     @PostMapping("/confirm")
-    public ResponseEntity<UserDto> confirmUserAccount(@RequestParam("t") String activationKey);
+    public ResponseEntity<AuthUserDto> confirmUserAccount(@RequestParam("t") String activationKey);
 
     @PostMapping("/reset-password")
-    public ResponseEntity<UserDto> sendPasswordResetMail(@RequestBody String userEmail);
+    public ResponseEntity<AuthUserDto> sendPasswordResetMail(@RequestBody String userEmail);
 
     @PostMapping("/reset-password-confirm")
-    public ResponseEntity<UserDto> resetUserPassword(@RequestParam("token") String token, @RequestBody ResetPasswordRequest passwordDto);
+    public ResponseEntity<AuthUserDto> resetUserPassword(@RequestParam("token") String token, @RequestBody ResetPasswordRequest passwordDto);
 
     @PostMapping("/change-password")
-    public ResponseEntity<UserDto> changeUserPassword(@RequestBody ChangePasswordRequest changePasswordRequest);
+    public ResponseEntity<AuthUserDto> changeUserPassword(@RequestBody ChangePasswordRequest changePasswordRequest);
 
 }
